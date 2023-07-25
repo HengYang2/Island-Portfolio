@@ -8,7 +8,8 @@ export default {
 
     extend: {
       borderWidth: {
-        DEFAULT: '2px'
+        DEFAULT: '2px',
+        1: '1px'
       },
     },
   },
