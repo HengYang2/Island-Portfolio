@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .info-icon {
+        @apply text-base h-8 w-24 text-center pt-1 hover:bg-red-400 hover:border;
+    }
+    .teleport-icon {
+        @apply bg-white text-base h-20 w-20 text-center rounded-full hover:bg-blue-400 hover:border;
+    }
+}
