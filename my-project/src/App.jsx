@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import './App.css'
+import Modal from './Modal'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [isOpen, setIsOpen] = useState(false)
   return (
-    <h1 className="text">
-      Hello world!
-    </h1>
+    <>    
+      {/* <button onClick={() => {setIsOpen(true)}}>Open Modal</button>
+      <Modal open={isOpen} onClose={() => {setIsOpen(false)}} /> */}
+    </>
   )
-  
 }
 
 export default App
