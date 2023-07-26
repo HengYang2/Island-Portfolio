@@ -11,6 +11,9 @@ export default {
         DEFAULT: '2px',
         1: '1px'
       },
+      margin: {
+        90: '48rem',
+      }
     },
   },
   plugins: [],

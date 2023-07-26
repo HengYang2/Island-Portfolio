@@ -10,7 +10,11 @@ export default function AboutMePage() {
     //Div for displaying text response from npc:
     return (
         <div className='absolute top-0 left-0 w-full h-full pt-16'>
-
+            <div className='bg-white w-40 h-36 ml-90 mt-40 absolute flex flex-col justify-center gap-1 items-center border border-black rounded-md'>
+                <button className='text-option'>Who are you?</button>
+                <button className='text-option'>Where am I?</button>
+                <button className='text-option'>What do you do for fun?</button>
+            </div>
             <div className='relative w-3/4 h-44 bg-white ml-40 mt-80 border border-black rounded-md flex flex-row justify-center gap-2'>
                 <div className='left-.5 top-1.5 h-32 w-32 relative'>
                     <img src="../../../public/images/hengs_profile_picture.jpeg" alt="" className='relative border border-black rounded-md' />
