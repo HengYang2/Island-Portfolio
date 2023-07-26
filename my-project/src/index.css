@@ -14,7 +14,7 @@
     }
 
     .text-option {
-        @apply bg-white h-10 w-36 border-0.5 border-black text-center rounded-md hover:bg-blue-400 hover:border hover:border-white hover:text-white text-sm box-shadow button-hover-effect;
+        @apply bg-white h-10 w-36 border-0.5 border-black text-center rounded-md hover:bg-blue-400 hover:border hover:border-white hover:text-white text-sm box-shadow button-hover-effect z-50;
     }
 
     .button-hover-effect {
