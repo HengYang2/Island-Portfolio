@@ -8,8 +8,9 @@ export default {
 
     extend: {
       borderWidth: {
-        DEFAULT: '2px',
-        1: '1px'
+        DEFAULT: '1px',
+        0.5: '0.5px',
+        2: '2px',
       },
       margin: {
         90: '48rem',

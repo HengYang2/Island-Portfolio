@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 export default function Navbar() {
     const history = useHistory();
     return (
-        <div className='top-0 left-0 fixed min-h-full w-32 flex flex-col gap-2 justify-start items-center'>
+        <div className='top-0 left-0 fixed min-h-full w-32 flex flex-col gap-2 justify-start items-center box-shadow border border-black'>
             <div className='top-0 left-0 absolute min-h-full min-w-full bg-black opacity-60 z-999'></div>
             <div className=' mt-2 flex flex-col gap-0 justify-center items-center z-1000 relative'>
                 <a href="" className='info-icon'>LinkedIn</a>
