@@ -14,7 +14,7 @@ export default {
       },
       margin: {
         90: '48rem',
-        101: '875px',
+        101: '845px',
         102: '445px',
       },
       keyframes: {

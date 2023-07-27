@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 //Response Module:
 import responseModule from './modules/responseModule'
@@ -19,8 +19,15 @@ export default function AboutMePage() {
     //UseState to check if the dialog div has been clicked:
     const [clicked, setClicked] = useState(false)
 
+    //UseState to for toggling inidicator visiblity:
+    const [indicatorVisible, setIndicatorVisible] = useState(false);
+
+    //UseState to indiacate if the text has fully been displayed:
+    const [thirdVar, setThirdVar] = useState(false);
+
     //A function that will type each letter out individually of a string.
-    const text = useTypingEffect(responseModule(selectedQuestion), 50, setClicked)
+    const text = useTypingEffect(responseModule(selectedQuestion), 50, clicked, setClicked, setIndicatorVisible, thirdVar)
+
 
     //Conditionally render questions based on the questionsVisable useState:
     function toggleQuestionsVisable() {
@@ -37,16 +44,25 @@ export default function AboutMePage() {
     //Conditionally render P tag: One has the text being typed out, the other has the text instantly displayed:
     function conditionalP() {
         if (clicked == true) {
-            return <p onClick={() => { setClicked(true); setQuestionsVisable(true); }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow'>{responseModule(selectedQuestion)}</p>
+            return <p onClick={() => { setIndicatorVisible(false); setQuestionsVisable(true); }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow'>{responseModule(selectedQuestion)}</p>
         } else {
-            return <p onClick={() => { setClicked(true) }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow'>{text}</p>
+            return <p onClick={() => { setIndicatorVisible(true); setClicked(true); setThirdVar(true) }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow'>{text}</p>
+        }
+    }
+
+    //Conditionally render 'Press to Continue' button, based on if the text is done displaying:
+    function conditionalIndicator() {
+        if (indicatorVisible == true) {
+            return <h2 className='bg-yellow-300 border border-black rounded-md w-16 h-8 text-xs absolute text-center ml-101 mt-102 z-50 animate-upDown'>{'Click To Continue'}</h2>
+        } else {
+            return <></>
         }
     }
 
     //Div for displaying text response from npc:
     return (
         <div className='absolute top-0 left-0 w-full h-full pt-16'>
-            <h1 className='bg-red-300 w-8 h-8 absolute text-center ml-101 mt-102 z-50 animate-upDown'>{'>'}</h1>
+            {conditionalIndicator()}
             {toggleQuestionsVisable()}
             <div className='relative w-3/4 h-44 ml-40 mt-80 flex flex-row justify-center gap-2'>
                 <div className='bg-yellow-100 absolute w-full h-full border border-black rounded-md box-shadow animate-subtlePulse -z-1 opacity-70'></div>
@@ -60,3 +76,7 @@ export default function AboutMePage() {
         </div>
     )
 }
+
+//Do i need to click on the div 1 or twice?
+//If I click on it twice, how do I stop the previous word from loading
+    //How do I tell it stop? 
