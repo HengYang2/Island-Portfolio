@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-export default function useTypingEffect(textToType, interKeyStrokeDurationInMs, clicked, setClicked, setIndicatorVisible, thirdVar) {
+export default function useTypingEffect(textToType, interKeyStrokeDurationInMs, clicked, setClicked, setIndicatorVisible, thirdVar, setSelectedQuestion) {
     const [currentPosition, setCurrentPosition] = useState(0);
     const currentPositionRef = useRef(0);
 
@@ -8,16 +8,14 @@ export default function useTypingEffect(textToType, interKeyStrokeDurationInMs, 
         const intervalId = setInterval(() => {
             setCurrentPosition((value) => value + 1)
             currentPositionRef.current += 1;
+            if(clicked == true) {
+                return
+            }
             if (currentPositionRef.current > textToType.length) {
                 console.log('currentPositionRef', currentPositionRef.current);
                 clearInterval(intervalId);
                 setClicked(true)
-                if (thirdVar == false) {
-                    setIndicatorVisible(true)
-                } else {
-                    setIndicatorVisible(false)
-                }
-                console.log("All done typing!");
+                setIndicatorVisible(true)
             }
         }, interKeyStrokeDurationInMs);
         return () => {
@@ -26,7 +24,7 @@ export default function useTypingEffect(textToType, interKeyStrokeDurationInMs, 
             currentPositionRef.current = 0;
         }
 
-    }, [interKeyStrokeDurationInMs, textToType, thirdVar]);
+    }, [interKeyStrokeDurationInMs, textToType, clicked]);
 
     return textToType.substring(0, currentPosition)
 }

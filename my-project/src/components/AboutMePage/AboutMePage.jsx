@@ -26,7 +26,7 @@ export default function AboutMePage() {
     const [thirdVar, setThirdVar] = useState(false);
 
     //A function that will type each letter out individually of a string.
-    const text = useTypingEffect(responseModule(selectedQuestion), 50, clicked, setClicked, setIndicatorVisible, thirdVar)
+    const text = useTypingEffect(responseModule(selectedQuestion), 50, clicked, setClicked, setIndicatorVisible, thirdVar, setSelectedQuestion)
 
 
     //Conditionally render questions based on the questionsVisable useState:
@@ -44,9 +44,9 @@ export default function AboutMePage() {
     //Conditionally render P tag: One has the text being typed out, the other has the text instantly displayed:
     function conditionalP() {
         if (clicked == true) {
-            return <p onClick={() => { setIndicatorVisible(false); setQuestionsVisable(true); }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow'>{responseModule(selectedQuestion)}</p>
+            return <p onClick={() => { setIndicatorVisible(false); setQuestionsVisable(true);}} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow'>{responseModule(selectedQuestion)}</p>
         } else {
-            return <p onClick={() => { setIndicatorVisible(true); setClicked(true); setThirdVar(true) }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow'>{text}</p>
+            return <p onClick={() => { setIndicatorVisible(true); setClicked(true); setThirdVar(true); }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow'>{text}</p>
         }
     }
 
