@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
+import responseModule from '../components/AboutMePage/modules/responseModule';
 
-export default function useTypingEffect(textCollection, collectionIndex, textSpeed, setIndicatorVisible, setQuestionsVisable) {
+export default function useTypingEffect(textCollection, collectionIndex, textSpeed, setIndicatorVisible, setQuestionsVisable, setClickBlockerDiv) {
 
     const [currentPosition, setCurrentPosition] = useState(0);
     const currentPositionRef = useRef(0);
@@ -15,6 +16,7 @@ export default function useTypingEffect(textCollection, collectionIndex, textSpe
             if (currentPositionRef.current > textCollection[collectionIndex].length) {
                 clearInterval(intervalId);
                 if (collectionIndex == textCollection.length - 1) {
+                    setClickBlockerDiv(true);
                     setIndicatorVisible(false);
                     setQuestionsVisable(true);
                 } else {
