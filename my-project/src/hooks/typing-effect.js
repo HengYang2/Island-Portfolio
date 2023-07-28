@@ -1,34 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-export default function useTypingEffect(textToType, interKeyStrokeDurationInMs, clicked, setClicked, setIndicatorVisible, thirdVar, setSelectedQuestion) {
+export default function useTypingEffect(textCollection, collectionIndex, textSpeed, setIndicatorVisible, setQuestionsVisable) {
+
     const [currentPosition, setCurrentPosition] = useState(0);
     const currentPositionRef = useRef(0);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
+            //Increment position in string
             setCurrentPosition((value) => value + 1)
             currentPositionRef.current += 1;
-            if(clicked == true) {
-                return
-            }
-            if (currentPositionRef.current > textToType.length) {
-                console.log('currentPositionRef', currentPositionRef.current);
+
+            //When the incrementaion is larger that the lenght of the string. Stop looping.
+            if (currentPositionRef.current > textCollection[collectionIndex].length) {
                 clearInterval(intervalId);
-                setClicked(true)
-                setIndicatorVisible(true)
+                if (collectionIndex == textCollection.length - 1) {
+                    setIndicatorVisible(false);
+                    setQuestionsVisable(true);
+                } else {
+                    setIndicatorVisible(true);
+                }
             }
-        }, interKeyStrokeDurationInMs);
+        }, textSpeed);
         return () => {
             clearInterval(intervalId);
             setCurrentPosition(0);
             currentPositionRef.current = 0;
         }
 
-    }, [interKeyStrokeDurationInMs, textToType, clicked]);
+    }, [textSpeed, textCollection[collectionIndex]], collectionIndex);
 
-    return textToType.substring(0, currentPosition)
+    return textCollection[collectionIndex].substring(0, currentPosition)
 }
-
-// if (clicked == true) {
-//     currentPositionRef.current = textToType.length + 1;
-// }
