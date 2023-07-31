@@ -18,7 +18,14 @@ export default {
         102: '445px',
       },
       keyframes: {
-        upDown: {
+        upDown1: {
+          '0%': { transform: 'translateY(0px)' },
+          '25%': { transform: 'translateY(-1.5px)' },
+          '50%': { transform: 'translateY(0px)' },
+          '75%': { transform: 'translateY(1.5px)' },
+          '100%': { transform: 'translateY(0px)' },
+        },
+        upDown2: {
           '0%': { transform: 'translateY(0px)' },
           '25%': { transform: 'translateY(-1.5px)' },
           '50%': { transform: 'translateY(0px)' },
@@ -64,7 +71,8 @@ export default {
 
       },
       animation: {
-        'upDown': 'upDown 4s linear infinite',
+        'upDown1': 'upDown1 4s linear infinite',
+        'upDown2': 'upDown2 4s linear infinite',
         'hoverPulse': 'hoverPulse 2s linear infinite',
         'subtlePulse': 'subtlePulse 3s linear infinite',
         'alert': 'alert 2s linear',

@@ -39,13 +39,13 @@ export default function AboutMePage() {
             setIndicatorVisible(false)
             setTextSpeed(200)
         } else {
-            setTextSpeed(5)
+            setTextSpeed(0.5)
         }
     }
 
     //Conditionally render indicator to click the div (this appears after text finishes typing out):
     function conditionalIndicator() {
-        return indicatorVisible ? <h2 className='bg-yellow-300 border border-black rounded-md w-16 h-8 text-xs absolute text-center ml-101 mt-102 z-50 animate-upDown'>{'Click To Continue'}</h2> : <></>;
+        return indicatorVisible ? <h2 className='bg-yellow-300 border border-black rounded-md w-16 h-8 text-xs absolute text-center ml-101 mt-102 z-50 animate-upDown1' onClick={() => { nextText();}}>{'Click To Continue'}</h2> : <></>;
     }
 
     //Conditionally render clickBlockerDiv:
