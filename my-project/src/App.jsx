@@ -19,7 +19,6 @@ function App() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <Router>
-      <img src='https://img.freepik.com/premium-photo/summer-sand-beach-with-coconut-palm-leaves-foreground_252965-1106.jpg' className='top-0 left-0 absolute h-full w-full -z-1 opacity-100'/>
       <Switch>
         <Route exact path='/'>
           <AboutMePage />

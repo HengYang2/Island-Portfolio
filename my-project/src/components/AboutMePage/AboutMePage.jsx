@@ -17,7 +17,7 @@ export default function AboutMePage() {
 
     const [collectionIndex, setCollectionIndex] = useState(0);
 
-    const [textSpeed, setTextSpeed] = useState(50);
+    const [textSpeed, setTextSpeed] = useState(25);
 
     const [indicatorVisible, setIndicatorVisible] = useState(false);
 
@@ -45,7 +45,7 @@ export default function AboutMePage() {
 
     //Conditionally render indicator to click the div (this appears after text finishes typing out):
     function conditionalIndicator() {
-        return indicatorVisible ? <h2 className='bg-yellow-300 border border-black rounded-md w-16 h-8 text-xs absolute text-center ml-101 mt-102 z-50 animate-upDown1' onClick={() => { nextText();}}>{'Click To Continue'}</h2> : <></>;
+        return indicatorVisible ? <h2 className='bg-yellow-300 border border-black rounded-md w-16 h-8 text-xs absolute z-30 text-center ml-101 mt-102 animate-upDown1' onClick={() => { nextText(); }}>{'Click To Continue'}</h2> : <></>;
     }
 
     //Conditionally render clickBlockerDiv:
@@ -68,16 +68,17 @@ export default function AboutMePage() {
     //Div for displaying text response from npc:
     return (
         <div className='absolute top-0 left-0 w-full h-full pt-16'>
+            <img src='https://img.freepik.com/premium-photo/summer-sand-beach-with-coconut-palm-leaves-foreground_252965-1106.jpg' className='top-0 left-0 absolute h-full w-full -z-50 opacity-100' />
             {conditionalIndicator()}
             {toggleQuestionsVisable()}
-            <div className='relative w-3/4 h-44 ml-40 mt-80 flex flex-row justify-center gap-2'>
+            <div className='relative w-3/4 h-44 ml-40 mt-80 flex flex-row justify-center gap-2 z-10'>
                 {clickBlocker()}
-                <div className='bg-yellow-100 absolute w-full h-full border border-black rounded-md box-shadow animate-subtlePulse -z-1 opacity-70'></div>
+                <div className='bg-yellow-100 absolute w-full h-full border border-black rounded-md box-shadow animate-subtlePulse z-10 opacity-70'></div>
                 <div className='left-.5 top-1.5 h-32 w-32 relative'>
                     {imageModule(selectedQuestion)}
-                    <h1 className='bg-white border border-black rounded-md mt-1.5 text-center box-shadow'>Heng Yang</h1>
+                    <h1 className='bg-white border border-black relative rounded-md mt-1.5 text-center box-shadow z-20'>Heng Yang</h1>
                 </div>
-                <p onClick={() => { nextText() }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow'>{text}</p>
+                <p onClick={() => { nextText() }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow z-20'>{text}</p>
             </div>
 
         </div>
